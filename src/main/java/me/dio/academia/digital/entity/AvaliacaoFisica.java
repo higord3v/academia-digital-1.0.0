@@ -27,8 +27,7 @@ public class AvaliacaoFisica {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @ManyToOne(cascade = CascadeType.REFRESH)
-  @JoinColumn(name = "aluno_id")
+  @ManyToOne
   private Aluno aluno;
 
   private LocalDateTime dataDaAvaliacao = LocalDateTime.now();
