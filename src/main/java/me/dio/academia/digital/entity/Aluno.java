@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -42,11 +43,12 @@ public class Aluno {
   private String bairro;
 
   private LocalDate dataDeNascimento;
-
+  
   @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JsonIgnore
   private List<AvaliacaoFisica> avaliacoes = new ArrayList<>();
 
   @OneToOne(mappedBy = "aluno", cascade = CascadeType.ALL)
+  @PrimaryKeyJoinColumn
   private Matricula matricula;
 }

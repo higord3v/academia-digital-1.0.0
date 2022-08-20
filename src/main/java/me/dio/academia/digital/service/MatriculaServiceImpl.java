@@ -24,7 +24,7 @@ public class MatriculaServiceImpl implements IMatriculaService{
     public Matricula create(MatriculaForm form) {
         // TODO Auto-generated method stub
 
-        Aluno aluno = alunoRepository.getById(form.getAlunoId());
+        Aluno aluno = alunoRepository.findById(form.getAlunoId()).get();
         
         Matricula matricula = new Matricula();
         matricula.setAluno(aluno);
@@ -34,19 +34,18 @@ public class MatriculaServiceImpl implements IMatriculaService{
     @Override
     public Matricula get(Long id) {
         // TODO Auto-generated method stub
-        return null;
+        return repository.findById(id).get();
     }
 
     @Override
     public List<Matricula> getAll() {
         // TODO Auto-generated method stub
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public void delete(Long id) {
         // TODO Auto-generated method stub
-        
+        repository.deleteById(id);
     }
-    
 }
