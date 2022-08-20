@@ -37,25 +37,29 @@ public class AvaliacaoFisicaService implements IAvaliacaoFisicaService{
     @Override
     public AvaliacaoFisica get(Long id) {
         // TODO Auto-generated method stub
-        return null;
+        return repository.findById(id).get();
     }
 
     @Override
     public List<AvaliacaoFisica> getAll() {
         // TODO Auto-generated method stub
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public AvaliacaoFisica update(Long id, AvaliacaoFisicaUpdateForm formUpdate) {
         // TODO Auto-generated method stub
-        return null;
+        AvaliacaoFisica avaliacaoFisica = repository.findById(id).get();
+        avaliacaoFisica.setAltura(formUpdate.getAltura());
+        avaliacaoFisica.setPeso(formUpdate.getPeso());
+        repository.save(avaliacaoFisica);
+
+        return avaliacaoFisica;
     }
 
     @Override
     public void delete(Long id) {
         // TODO Auto-generated method stub
-        
-    }
-    
+        repository.deleteById(id);
+    } 
 }

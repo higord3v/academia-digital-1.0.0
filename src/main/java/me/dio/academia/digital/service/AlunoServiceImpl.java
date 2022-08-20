@@ -2,7 +2,6 @@ package me.dio.academia.digital.service;
 
 import java.util.List;
 
-import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,9 +36,13 @@ public class AlunoServiceImpl implements IAlunoService{
     }
 
     @Override
-    public List<Aluno> getAll() {
+    public List<Aluno> getAll(String bairro) {
         // TODO Auto-generated method stub
-        return repository.findAll();
+        if (bairro == null) {
+            return repository.findAll();
+        }
+        
+        return repository.findByBairro(bairro);
     }
 
     @Override
@@ -60,5 +63,4 @@ public class AlunoServiceImpl implements IAlunoService{
         Aluno aluno = repository.findById(id).get();
         return aluno.getAvaliacoes();
     }
-    
 }

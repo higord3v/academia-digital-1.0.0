@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import me.dio.academia.digital.entity.Aluno;
@@ -25,8 +26,9 @@ public class AlunoController {
     private AlunoServiceImpl alunoService;
 
     @GetMapping
-    public List<Aluno> getAll() {
-        return alunoService.getAll();
+    public List<Aluno> getAll(@RequestParam(value = "bairro", required = false)
+                                        String bairro) {
+        return alunoService.getAll(bairro);
     }
 
     @PostMapping
